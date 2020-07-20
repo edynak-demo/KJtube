@@ -4,6 +4,10 @@ html, body {
   margin: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 #pageContainer {
   width: 100%;
   height: 100%;
@@ -25,7 +29,8 @@ html, body {
   align-items: center;
 }
 
-#mastHead button:not(.searchButton) {
+#mastHead button:not(.searchButton),
+#mastHead .rightIcons img {
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -34,6 +39,7 @@ html, body {
   border: none;
   background-color: transparent;
 }
+
 
 #mastHead button img {
   width: 100%;

@@ -30,7 +30,14 @@
           </button>
         </form>
       </div>
-
+      <div class="rightIcons">
+        <a href="upload.php">
+          <img class="upload" src="assets/images/icons/upload.png">
+        </a>
+        <a href="#">
+          <img class="upload" src="assets/images/profileImage/default.png">
+        </a>
+      </div>
     </div>
 
     <div id="sideNav" style="display:none;">
