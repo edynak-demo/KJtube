@@ -19,7 +19,7 @@
       <button class="navShowHide">Toggle</button>
     </div>
 
-    <div id="sideNav">
+    <div id="sideNav" style="display:none;">
     
     </div>
 

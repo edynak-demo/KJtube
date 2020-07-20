@@ -1,3 +1,17 @@
 $(document).ready(function () {
-  console.log("it's working");
+  $(".navShowHide").on("click", function () {
+
+    let main = $("#mainSection");
+    let nav = $("#sideNav");
+
+    if (main.hasClass("leftPadding")) {
+      nav.hide();
+    }
+    else {
+      nav.show();
+    }
+
+    main.toggleClass("leftPadding");
+  });
+
 });

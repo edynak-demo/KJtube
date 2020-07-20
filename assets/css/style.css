@@ -38,6 +38,12 @@ html, body {
 
 #mainSection {
   padding-top: 56px;
+  display: flex;
+}
+
+#mainSection.leftPadding {
+  padding: 240px;
+ 
 }
 
 #mainContent {
