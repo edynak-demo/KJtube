@@ -35,3 +35,11 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
+#mainSection {
+  padding-top: 56px;
+}
+
+#mainContent {
+  padding: 10px 30px;
+}

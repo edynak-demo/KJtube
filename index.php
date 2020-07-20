@@ -17,7 +17,10 @@
     </div>
 
     <div id="mainSection">
-    
+      
+      <div id="mainContent">
+        Welcome to the scariest movie ever YouTube clone
+      </div>
     </div>
   </div>
 </body>
