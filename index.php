@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KJtube</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-  Building a youtube type clone for my favorite youtuber thescariestmovieever after multiple videos getting removed by youtube for not following the narrative
+  <div id="pageContainer">
+    <div id=mastHead>
+      Hello KJ
+    </div>
+
+    <div id="sideNav">
+    
+    </div>
+
+    <div id="mainSection">
+    
+    </div>
+  </div>
 </body>
 </html>
