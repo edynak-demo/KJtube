@@ -21,6 +21,16 @@
       <a class="logo" href="index.php">
         <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
       </a>
+
+      <div class="searchBar">
+        <form action="search.php" method="GET">
+          <input type="text" class="searchBar" name="term" placeholder="Search...">
+          <button class="searchButton">
+            <img src="assets/images/icons/search.png">
+          </button>
+        </form>
+      </div>
+
     </div>
 
     <div id="sideNav" style="display:none;">
