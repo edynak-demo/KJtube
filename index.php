@@ -22,7 +22,7 @@
         <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
       </a>
 
-      <div class="searchBar">
+      <div class="searchBarContainer">
         <form action="search.php" method="GET">
           <input type="text" class="searchBar" name="term" placeholder="Search...">
           <button class="searchButton">
