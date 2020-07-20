@@ -16,7 +16,7 @@
 <body>
   <div id="pageContainer">
     <div id=mastHead>
-      <button class="navShowHide">Toggle</button>
+      <button class="navShowHide"><img src="assets/images/icons/menu.png"></button>
     </div>
 
     <div id="sideNav" style="display:none;">
