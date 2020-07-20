@@ -17,6 +17,10 @@
   <div id="pageContainer">
     <div id=mastHead>
       <button class="navShowHide"><img src="assets/images/icons/menu.png"></button>
+
+      <a class="logo" href="index.php">
+        <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
+      </a>
     </div>
 
     <div id="sideNav" style="display:none;">
