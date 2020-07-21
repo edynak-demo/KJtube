@@ -6,13 +6,22 @@ require_once("includes/classes/videoDetailsFormProvider.php");
 
 <div class="column">
 
-<?php
-$formProvider = new videoDetailsFormProvider();
-echo $formProvider->createUploadForm();
-?>
+    <?php
+    $formProvider = new videoDetailsFormProvider();
+    echo $formProvider->createUploadForm();
+
+    $query = $con->prepare("SELECT * FROM categories");    
+    $query->execute();
+
+    while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        echo $row["name"] . "<br>";
+    }
+
+    ?>
 
 
 </div>
 
 
 <?php require_once("includes/footer.php"); ?>
+                
