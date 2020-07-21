@@ -1,5 +1,5 @@
 <?php
-class VideoUploadData {
+class videoUploadData {
 
     public $videoDataArray, $title, $description, $privacy, $category, $uploadedBy;
 
