@@ -31,12 +31,17 @@ class VideoProcessor {
             $finalFilePath = $targetDir . uniqid() . ".mp4";
 
             if(!$this->insertVideoData($videoUploadData, $finalFilePath)) {
-                echo "Insert query failed";
+                echo "Error, insert query failed...\n";
                 return false;
             }
 
           if(!$this->convertVideoToMp4($tempFilePath, $finalFilePath)) {
-            echo "Upload failed";
+            echo "Error, upload failed...\n";
+            return false;
+          }
+
+          if(!$this->deleteFile($tempFilePath)) {
+            echo "Error, upload failed...\n";
             return false;
           }
 
@@ -100,6 +105,15 @@ class VideoProcessor {
         foreach($outputLog as $line) {
           echo $line . "<br>";
         }
+        return false;
+      }
+
+      return true;
+    }
+
+    private function deleteFile($filePath) {
+      if(!unlink($filePath)) {
+        echo "Error, could not delete the file...\n";
         return false;
       }
 
