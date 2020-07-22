@@ -20,7 +20,9 @@
         <div class="column">
 
             <div class="header">
-            
+              <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
+              <h3>Sign Up</h3>
+              <span>to continue to KJtube</span>
             </div>
 
             <div class="loginForm">
