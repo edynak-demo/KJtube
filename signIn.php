@@ -21,16 +21,24 @@
 
             <div class="header">
               <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
-              <h3>Sign Up</h3>
+              <h3>Sign in</h3>
               <span>to continue to KJtube</span>
             </div>
 
             <div class="loginForm">
-              <form action="signUp.php">
-                
+              <form action="signIn.php">
+
+                <input type="text" name="username" placeholder="Username" required autocomplete="off">
+
+                <input type="password" name="password" placeholder="Password" required>
+
+                <input type="submit" name="submitButton" value="SUBMIT">
+
+              </form>
+
             </div>
 
-            <a class="signInMessage" href="signIn.php">Already have an account? Sign in here!</a>
+            <a class="signInMessage" href="signUp.php">Dont have an account? Sign up here!</a>
         
         </div>
     
