@@ -34,7 +34,7 @@
                 <input type="text" name="username" placeholder="Username" autocomplete="off" required>
 
                 <input type="email" name="email" placeholder="Email" autocomplete="off" required>
-                <input type="email2" name="email2" placeholder="Confirm email" autocomplete="off" required>
+                <input type="email" name="email2" placeholder="Confirm email" autocomplete="off" required>
 
                 <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                 <input type="password" name="password2" placeholder="Confirm password" autocomplete="off" required>
