@@ -6,6 +6,8 @@ class VideoProcessor {
     private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogv", "ogg", "avi", "wmv", "mov", "mpeg", "mpg","gif");
     private $ffmpegPath = "ffmpeg/ffmpeg";
 
+    private $ffprobePath = "ffmpeg/ffprobe";
+
     public function __construct($con) {
         $this->con = $con;
     }
@@ -14,10 +16,8 @@ class VideoProcessor {
 
         $targetDir = "uploads/videos/";
         $videoData = $videoUploadData->videoDataArray;
-        
-        $tempFilePath = $targetDir . uniqid() . basename($videoData["name"]);
-        //uploads/videos/5aa3e9343c9ffdogs_playing.flv
 
+        $tempFilePath = $targetDir . uniqid() . basename($videoData["name"]);
         $tempFilePath = str_replace(" ", "_", $tempFilePath);
 
         $isValidData = $this->processData($videoData, $tempFilePath);
@@ -27,23 +27,27 @@ class VideoProcessor {
         }
 
         if(move_uploaded_file($videoData["tmp_name"], $tempFilePath)) {
-            
             $finalFilePath = $targetDir . uniqid() . ".mp4";
 
             if(!$this->insertVideoData($videoUploadData, $finalFilePath)) {
-                echo "Error, insert query failed...\n";
+                echo "Insert query failed\n";
                 return false;
             }
 
-          if(!$this->convertVideoToMp4($tempFilePath, $finalFilePath)) {
-            echo "Error, upload failed...\n";
-            return false;
-          }
+            if(!$this->convertVideoToMp4($tempFilePath, $finalFilePath)) {
+                echo "Upload failed\n";
+                return false;
+            }
 
-          if(!$this->deleteFile($tempFilePath)) {
-            echo "Error, upload failed...\n";
-            return false;
-          }
+            if(!$this->deleteFile($tempFilePath)) {
+                echo "Upload failed\n";
+                return false;
+            }
+
+            if(!$this->generateThumbnails($finalFilePath)) {
+                echo "Upload failed - could not generate thumbnails\n";
+                return false;
+            }
 
         }
     }
@@ -95,29 +99,44 @@ class VideoProcessor {
     }
 
     public function convertVideoToMp4($tempFilePath, $finalFilePath) {
-      $cmd = "$this->ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
+        $cmd = "$this->ffmpegPath -i $tempFilePath $finalFilePath 2>&1";
 
-      $outputLog = array();
-      exec($cmd, $outputLog, $returnCode);
-
-      if($returnCode != 0) {
-        //Command failed
-        foreach($outputLog as $line) {
-          echo $line . "<br>";
+        $outputLog = array();
+        exec($cmd, $outputLog, $returnCode);
+        
+        if($returnCode != 0) {
+            //Command failed
+            foreach($outputLog as $line) {
+                echo $line . "<br>";
+            }
+            return false;
         }
-        return false;
-      }
 
-      return true;
+        return true;
     }
 
     private function deleteFile($filePath) {
-      if(!unlink($filePath)) {
-        echo "Error, could not delete the file...\n";
-        return false;
-      }
+        if(!unlink($filePath)) {
+            echo "Could not delete file\n";
+            return false;
+        }
 
-      return true;
+        return true;
+    }
+
+    public function generateThumbnails($filePath) {
+
+        $thumbnailSize = "210x118";
+        $numThumbnails = 3;
+        $pathToThumbnail = "uploads/videos/thumbnails";
+        
+        $duration = $this->getVideoDuration($filePath);
+
+        echo "duration: $duration";
+    }
+
+    private function getVideoDuration($filePath) {
+        return shell_exec("$this->ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $filePath");
     }
 }
 ?>
