@@ -7,12 +7,18 @@ class Video {
         $this->con = $con;
         $this->userLoggedInObj = $userLoggedInObj;
 
-        $query = $this->con->prepare("SELECT * FROM users WHERE username = :un");
-        $query->bindParam(":un", $username);
-        $query->execute();
+        if(is_array($input)) {
+          $this->sqlData = $input;
+        }
+        else {
+          $query = $this->con->prepare("SELECT * FROM videos WHERE id = :id");
+          $query->bindParam(":id", $input);
+          $query->execute();
 
-        $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
+          $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
+        }
     }
+
     
     public function getUsername() {
         return $this->sqlData["username"];
