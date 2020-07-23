@@ -2,6 +2,7 @@
 require_once("includes/config.php");
 require_once("includes/classes/account.php");
 require_once("includes/classes/constants.php");
+require_once("includes/classes/formSanitizer.php");
 
  $account = new Account($con);
 

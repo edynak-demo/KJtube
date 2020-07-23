@@ -7,11 +7,29 @@ class Account {
     public function __construct($con) {
         $this->con = $con;
     }
+
+    public function login($un, $pw) {
+        $pw = hash("sha512", $pw);
+
+        $query = $this->con->prepare("SELECT * FROM users WHERE username=:un AND password=:pw");
+        $query->bindParam(":un", $un);
+        $query->bindParam(":pw", $pw);
+
+        $query->execute();
+
+        if($query->rowCount() == 1) {
+            return true;
+        }
+        else {
+            array_push($this->errorArray, Constants::$loginFailed);
+            return false;
+        }
+    }
     
     public function register($fn, $ln, $un, $em, $em2, $pw, $pw2) {
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
-        $this->validateUserName($un);
+        $this->validateUsername($un);
         $this->validateEmails($em, $em2);
         $this->validatePasswords($pw, $pw2);
 
@@ -24,6 +42,7 @@ class Account {
     }
 
     public function insertUserDetails($fn, $ln, $un, $em, $pw) {
+        
         $pw = hash("sha512", $pw);
         $profilePic = "assets/images/profileImages/default.png";
 
@@ -68,14 +87,14 @@ class Account {
 
     }
 
-        private function validateEmails($em, $em2) {
+    private function validateEmails($em, $em2) {
         if($em != $em2) {
             array_push($this->errorArray, Constants::$emailsDoNotMatch);
             return;
         }
 
         if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-          array_push($this->errorArray, Constants::$emailInvalid);
+            array_push($this->errorArray, Constants::$emailInvalid);
             return;
         }
 
@@ -100,7 +119,7 @@ class Account {
             return;
         }
 
-        if(strlen($pw) > 30 || strlen($pw) < 8) {
+        if(strlen($pw) > 30 || strlen($pw) < 5) {
             array_push($this->errorArray, Constants::$passwordLength);
         }
     }
