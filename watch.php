@@ -1,6 +1,6 @@
 <?php 
 require_once("includes/header.php"); 
-require_once("includes/classes/video.php"); 
+require_once("includes/classes/videoPlayer.php"); 
  
 
 if(!isset($_GET["id"])) {
@@ -11,6 +11,14 @@ if(!isset($_GET["id"])) {
 $video = new Video($con, $_GET["id"], $userLoggedInObj);
 $video->incrementViews();
 ?>
+
+<div class="watchLeftColumn">
+
+<?php
+    $videoPlayer = new VideoPlayer($video);
+    echo $videoPlayer->create(true);
+
+
 
 
 
