@@ -2,13 +2,13 @@ function likeVideo(button, videoId) {
   $.post("ajax/likeVideo.php", { videoId: videoId })
     .done(function (data) {
 
-      var likeButton = $(button);
-      var dislikeButton = $(button).siblings(".dislikeButton");
+      let likeButton = $(button);
+      let dislikeButton = $(button).siblings(".dislikeButton");
 
       likeButton.addClass("active");
       dislikeButton.removeClass("active");
 
-      var result = JSON.parse(data);
+      let result = JSON.parse(data);
       console.log(result);
     });
 }
