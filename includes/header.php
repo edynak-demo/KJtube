@@ -3,7 +3,7 @@ require_once("includes/config.php");
 require_once("includes/classes/user.php");
 require_once("includes/classes/video.php");
 
-$usernameLoggedIn = isset($_SESSION["userLoggedIn"]) ? $_SESSION["userLoggedIn"] : "";
+$usernameLoggedIn = User::isLoggedIn() ? $_SESSION["userLoggedIn"] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
         <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
       </a>
 
-      <div class="searchBarContainer">
+      <div class="searchBar">
         <form action="search.php" method="GET">
           <input type="text" class="searchBar" name="term" placeholder="Search...">
           <button class="searchButton">
