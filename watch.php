@@ -18,6 +18,15 @@ $video->incrementViews();
     $videoPlayer = new VideoPlayer($video);
     echo $videoPlayer->create(true);
 
+    
+?>
+
+
+</div>
+
+<div class="suggestions">
+
+</div>
 
 
 
