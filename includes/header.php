@@ -30,7 +30,7 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
         <img src="assets/images/icons/KJtube.png" title="logo" alt="KJtube site logo">
       </a>
 
-      <div class="searchBar">
+      <div class="searchBarContainer">
         <form action="search.php" method="GET">
           <input type="text" class="searchBar" name="term" placeholder="Search...">
           <button class="searchButton">
@@ -43,7 +43,7 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
           <img class="upload" src="assets/images/icons/upload.png">
         </a>
         <a href="#">
-          <img class="upload" src="assets/images/profileImage/default.png">
+          <img class="upload" src="assets/images/profileImages/default.png">
         </a>
       </div>
     </div>
