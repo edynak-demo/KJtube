@@ -50,7 +50,7 @@ class ButtonProvider {
                     $button
                 </div>";
     }
-
+    
     public static function createSubscriberButton($con, $userToObj, $userLoggedInObj) {
         $userTo = $userToObj->getUsername();
         $userLoggedIn = $userLoggedInObj->getUsername();
