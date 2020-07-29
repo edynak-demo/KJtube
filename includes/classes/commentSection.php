@@ -22,7 +22,26 @@ class CommentSection {
         $commentAction = "postComment(this, \"$postedBy\", $videoId, null, \"comments\")";
         $commentButton = ButtonProvider::createButton("COMMENT", null, $commentAction, "postComment");
 
-   }
+          // Get comments html
+
+        return "<div class='commentSection'>
+
+                    <div class='header'>
+                        <span class='commentCount'>$numComments Comments</span>
+
+                        <div class='commentForm'>
+                            $profileButton
+                            <textarea class='commentBodyClass' placeholder='Add a public comment'></textarea>
+                            $commentButton
+                        </div>
+                    </div>
+
+                    <div class='comments'>
+
+                    </div>
+
+                </div>";
+    }
 
 }
-?>   
+?>
