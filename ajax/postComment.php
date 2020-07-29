@@ -4,7 +4,7 @@ require_once("../includes/classes/user.php");
 require_once("../includes/classes/comment.php");
 
 if(isset($_POST['commentText']) && isset($_POST['postedBy']) && isset($_POST['videoId'])) {
-    
+    $userLoggedInObj = new User($con, $_SESSION["userLoggedIn"]);
     $query = $con->prepare("INSERT INTO comments(postedBy, videoId, responseTo, body)
                             VALUES(:postedBy, :videoId, :responseTo, :body)");
     $query->bindParam(":postedBy", $postedBy);
@@ -14,12 +14,12 @@ if(isset($_POST['commentText']) && isset($_POST['postedBy']) && isset($_POST['vi
 
     $postedBy = $_POST['postedBy'];
     $videoId = $_POST['videoId'];
-    $responseTo = $_POST['responseTo'];
+    $responseTo = (int)$_POST['responseTo'];
     $commentText = $_POST['commentText'];
 
     $query->execute();
 
-    $userLoggedInObj = new User($con, $_SESSION["userLoggedIn"]);
+    
     $newComment = new Comment($con, $con->lastInsertId(), $userLoggedInObj, $videoId);
     echo $newComment->create();
 }
