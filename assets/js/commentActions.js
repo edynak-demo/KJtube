@@ -11,8 +11,12 @@ function postComment(button, postedBy, videoId, replyTo, containerClass) {
     })
       .done(function (comment) {
 
-        $("." + containerClass).prepend(comment);
-
+        if (!replyTo) {
+          $("." + containerClass).prepend(comment);
+        }
+        else {
+          $(button).parent().siblings("." + containerClass).append(comment);
+        }
 
       });
 
