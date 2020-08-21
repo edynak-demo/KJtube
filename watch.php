@@ -2,6 +2,7 @@
 require_once("includes/header.php"); 
 require_once("includes/classes/videoPlayer.php"); 
 require_once("includes/classes/videoInfoSection.php");
+require_once("includes/classes/comment.php");
 require_once("includes/classes/commentSection.php");
 
 if(!isset($_GET["id"])) {
