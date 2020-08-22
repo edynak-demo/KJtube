@@ -36,7 +36,21 @@ class VideoGridItem {
     }
 
     private function createDetails() {
-        return "";
+        $title = $this->video->getTitle();
+        $username = $this->video->getUploadedBy();
+        $views = $this->video->getViews();
+        $description = $this->video->getDescription();
+        $timestamp = $this->video->getTimeStamp();
+
+        return "<div class='details'>
+                    <h3 class='title'>$title</h3>
+                    <span class='username'>$username</span>
+                    <div class='stats'>
+                        <span class='viewCount'>$views - </span>
+                        <span class='timeStamp'>$timestamp</span>
+                    </div>
+                    $description
+                </div>";
     }
 
 }
