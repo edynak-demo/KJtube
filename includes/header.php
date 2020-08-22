@@ -2,6 +2,8 @@
 require_once("includes/config.php");
 require_once("includes/classes/user.php");
 require_once("includes/classes/video.php");
+require_once("includes/classes/videoGrid.php");
+require_once("includes/classes/videoGridItem.php");
 
 $usernameLoggedIn = User::isLoggedIn() ? $_SESSION["userLoggedIn"] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
