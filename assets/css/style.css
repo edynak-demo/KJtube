@@ -500,6 +500,7 @@ a:hover {
 }
 
 .videoGridItem {
+    height: 200px;
     margin-right: 4px;
     margin-bottom: 24px;
 }
@@ -551,7 +552,7 @@ a:hover {
 
 .videoGridItem .details .title {
     margin: 8px 0;
-    max-height: 32px
+    max-height: 32px;
     overflow: hidden;
     font-size: 14px;
     font-weight: 500;
@@ -566,4 +567,15 @@ a:hover {
     overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.videoGridHeader {
+    display: flex;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.videoGridHeader div {
+    flex: 1;
 }

@@ -4,6 +4,7 @@ require_once("includes/classes/user.php");
 require_once("includes/classes/video.php");
 require_once("includes/classes/videoGrid.php");
 require_once("includes/classes/videoGridItem.php");
+require_once("includes/classes/subscriptionsProvider.php");
 
 $usernameLoggedIn = User::isLoggedIn() ? $_SESSION["userLoggedIn"] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
