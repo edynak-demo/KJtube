@@ -3,7 +3,10 @@ require_once("../includes/config.php");
 require_once("../includes/classes/comment.php"); 
 require_once("../includes/classes/user.php"); 
 
-$username = $_SESSION["userLoggedIn"];
+    if(isset($_SESSION["userLoggedIn"]))
+       $username = $_SESSION["userLoggedIn"];
+    else
+       $username = "";
 $videoId = $_POST["videoId"];
 $commentId = $_POST["commentId"];
 
