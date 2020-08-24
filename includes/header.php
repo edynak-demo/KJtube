@@ -1,10 +1,12 @@
 <?php 
 require_once("includes/config.php");
+require_once("includes/classes/buttonProvider.php");
 require_once("includes/classes/user.php");
 require_once("includes/classes/video.php");
 require_once("includes/classes/videoGrid.php");
 require_once("includes/classes/videoGridItem.php");
 require_once("includes/classes/subscriptionsProvider.php");
+
 
 $usernameLoggedIn = User::isLoggedIn() ? $_SESSION["userLoggedIn"] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
@@ -43,21 +45,18 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
           </button>
         </form>
       </div>
-      <div class="rightIcons">
-        <a href="upload.php">
-          <img class="upload" src="assets/images/icons/upload.png">
-        </a>
-        <a href="#">
-          <img class="upload" src="assets/images/profileImages/default.png">
-        </a>
-      </div>
-    </div>
+            <div class="rightIcons">
+                <a href="upload.php">
+                    <img class="upload" src="assets/images/icons/upload.png">
+                </a>
+                <?php echo ButtonProvider::createUserProfileNavigationButton($con, $userLoggedInObj->getUsername()); ?>
+            </div>
 
-    <div id="sideNav" style="display:none;">
-    
-    </div>
+        </div>
 
-    <div id="mainSection">
+        <div id="sideNavContainer" style="display:none;">
+        
+        </div>
 
-      <div id="mainContent">
-
+        <div id="mainSectionContainer">
+            <div id="mainContentContainer">
